@@ -307,13 +307,27 @@ public class ReactSlider extends AppCompatSeekBar {
 
   public void setThumbImage(final String uri) {
     if (uri != null) {
-      setThumb(getBitmapDrawable(uri));
-      // Enable alpha channel for the thumbImage
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        setSplitTrack(false);
-      }
+        setThumb(getBitmapDrawable(uri));
+        // Enable alpha channel for the thumbImage
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            setSplitTrack(false);
+        }
     } else {
-      setThumb(getThumb());
+        // Get the current thumb
+        Drawable thumbDrawable = getThumb();
+        if (thumbDrawable instanceof BitmapDrawable) {
+            // Convert drawable to bitmap
+            Bitmap thumbBitmap = ((BitmapDrawable) thumbDrawable).getBitmap();
+
+            // Scale the bitmap to desired size (e.g., 100x100 pixels)
+            Bitmap scaledThumbBitmap = Bitmap.createScaledBitmap(thumbBitmap, 100, 100, false);
+
+            // Create a new BitmapDrawable with the scaled bitmap
+            BitmapDrawable scaledThumbDrawable = new BitmapDrawable(getResources(), scaledThumbBitmap);
+
+            // Set the new scaled thumb
+            setThumb(scaledThumbDrawable);
+        }
     }
-  }
+}
 }
