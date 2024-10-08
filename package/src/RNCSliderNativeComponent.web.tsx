@@ -67,7 +67,7 @@ const RCTSliderWebComponent = React.forwardRef(
       inverted = false,
       disabled = false,
       trackHeight = 4,
-      thumbSize = 20,
+      thumbSize = 50,
       thumbImage,
       onRNCSliderSlidingStart = (_: Event) => {},
       onRNCSliderSlidingComplete = (_: Event) => {},

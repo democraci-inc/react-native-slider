@@ -1,0 +1,8 @@
+<!-- res/drawable/square_thumb.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="#808080"/> <!-- Gray color -->
+    <size
+        android:width="40dp"
+        android:height="40dp"/> <!-- Set the size of the square -->
+</shape>

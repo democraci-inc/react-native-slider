@@ -16,7 +16,7 @@ import android.util.AttributeSet;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
 import androidx.appcompat.widget.AppCompatSeekBar;
-
+import android.graphics.drawable.Drawable;
 import java.net.URL;
 import java.util.List;
 import java.util.Timer;
@@ -313,21 +313,9 @@ public class ReactSlider extends AppCompatSeekBar {
             setSplitTrack(false);
         }
     } else {
-        // Get the current thumb
-        Drawable thumbDrawable = getThumb();
-        if (thumbDrawable instanceof BitmapDrawable) {
-            // Convert drawable to bitmap
-            Bitmap thumbBitmap = ((BitmapDrawable) thumbDrawable).getBitmap();
-
-            // Scale the bitmap to desired size (e.g., 100x100 pixels)
-            Bitmap scaledThumbBitmap = Bitmap.createScaledBitmap(thumbBitmap, 100, 100, false);
-
-            // Create a new BitmapDrawable with the scaled bitmap
-            BitmapDrawable scaledThumbDrawable = new BitmapDrawable(getResources(), scaledThumbBitmap);
-
-            // Set the new scaled thumb
-            setThumb(scaledThumbDrawable);
-        }
+      Drawable customThumbDrawable = getResources().getDrawable(R.drawable.square_thumb);
+        setThumb(customThumbDrawable);  // Set cus
+      
     }
 }
 }
